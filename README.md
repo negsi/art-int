@@ -1,8 +1,8 @@
-# Concise - An AI News Summarizer
+# Artint - An intelligent argentic system for AI.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-Concise allows users to subscribe to RSS feeds from various news portals and summarizes the articles concisely using AI.
+Artint enables the simple and convenient creation of intelligent AI agents that can take over any conceivable task on your computer for you.
 
 ## 🚀 Requirements
 
@@ -15,8 +15,8 @@ Concise allows users to subscribe to RSS feeds from various news portals and sum
 ### 1. Clone or download repository
 
 ```bash
-git clone https://github.com/negsi/concise.git
-cd concise
+git clone https://github.com/negsi/art-int.git
+cd art-int
 ```
 
 ### 2. Create a virtual environment (optional, but recommended)
