@@ -18,7 +18,7 @@ import os
 import requests
 from openai import OpenAI
 from dotenv import load_dotenv 
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, render_template
 
 # --- Load environment variables ---
 load_dotenv()
