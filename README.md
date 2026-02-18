@@ -1,2 +1,2 @@
 # art-int
-The next Generation artifzieller Intelligenz.
+The next Generation argentic Intelligenz.
