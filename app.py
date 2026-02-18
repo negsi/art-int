@@ -15,6 +15,8 @@ Art-Int - An intelligent argent system for AI.
 import os
 
 # --- Third‑party imports ---
+import pyautogui, base64
+from io import BytesIO
 from openai import OpenAI
 from dotenv import load_dotenv 
 from flask import Flask, render_template
@@ -58,7 +60,14 @@ def index():
     return render_template("app.html")
 
 
-def call_ai(text):
+def capture_region(region):
+    img = pyautogui.screenshot(region=region)
+    buffer = BytesIO()
+    img.save(buffer, format="PNG")
+    return base64.b64encode(buffer.getvalue()).decode("utf-8")
+
+
+def call_ai(text, image_base64=None):
     """
     Send a prompt to the configured AI backend and return the generated response.
 
@@ -82,12 +91,29 @@ def call_ai(text):
         If the backend or provider changes, only this function needs to be
         adapted.
     """
+    messages = [
+        {"role": "system", "content": SYSTEM_PROMPT},
+    ]
+
+    if image_base64:
+        messages.append({
+            "role": "user",
+            "content": [
+                {"type": "text", "text": text},
+                {
+                    "type": "image_url",
+                    "image_url": {
+                        "url": f"data:image/png;base64,{image_base64}"
+                    }
+                }
+            ]
+        })
+    else:
+        messages.append({"role": "user", "content": text})
+
     response = client.chat.completions.create(
         model=OPENAI_MODEL,
-        messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": text}
-        ]
+        messages=messages
     )
 
     return response.choices[0].message.content
@@ -95,4 +121,18 @@ def call_ai(text):
 
 # Development entry point
 if __name__ == "__main__":
-    app.run(debug=True)
+
+    user_text = input("Was soll der Agent tun? ")
+
+    region = (0, 0, 1920, 1080)
+    img_b64 = capture_region(region)
+
+    response = call_ai(
+        user_text,
+        image_base64=img_b64
+    )
+
+    with open("out.py", "w", encoding="utf-8") as f: 
+        f.write(response)
+
+    #app.run(debug=True)
