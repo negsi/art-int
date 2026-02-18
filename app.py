@@ -15,7 +15,6 @@ Art-Int - An intelligent argent system for AI.
 import os
 
 # --- Third‑party imports ---
-import requests
 from openai import OpenAI
 from dotenv import load_dotenv 
 from flask import Flask, render_template
