@@ -17,3 +17,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - base application structure and theme
 
 [Unreleased]: https://github.com/negsi/art-int/compare/v0.0.1...develop
+[0.0.1]: https://github.com/negsi/art-int/releases/tag/v0.0.1
