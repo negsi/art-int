@@ -1,4 +1,4 @@
-# Artint - An intelligent argentic system for AI.
+# Artint - An intelligent agentic system for AI
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
